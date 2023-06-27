@@ -47,9 +47,9 @@ Es stehen folgende drei Dockerfiles zur Verfügung, welche unterschiedliche Funk
 
 ## Nutzung der Docker-Container
 
-**Überprüfen Sie die Ordnerstruktur nach dem GitHub-Download und entfernen Sie ggf. "-master" aus dem Verzeichnisnamen "Thesis_to_Docker-master" >> "Thesis_to_Docker" um die definierte Ordnerstruktur zu erhalten**
+**Überprüfen Sie die Ordnerstruktur nach dem GitHub-Download und entfernen Sie ggf. "-master" aus dem Verzeichnisnamen "Thesis_to_Docker-master" >> "Thesis_to_Docker" um die definierte Ordnerstruktur zu erhalten.**
 
-**!! In der Klasse „Authentication“ im Ordner Settings müssen URL, Username und Passwort zur Authentifizierung an der IoT-Plattform ThingsBoard hinterlegt werden, um alle Funktionalitäten nutzen zu können. !!**
+**!! In der Klasse „Authentication“ im Ordner Settings müssen URL, Username und Passwort zur Authentifizierung an der IoT-Plattform ThingsBoard hinterlegt werden, um alle Funktionalitäten nutzen zu können !!**
 
 Damit die Docker-Container bereitgestellt werden können, vergewissern Sie sich, dass Docker auf Ihrem System installiert ist. Öffnen Sie die Konsole und navigieren Sie in das Verzeichnis, in dem die Dockerfiles liegen und führen Sie folgende dockerfile-spezifische Befehle aus:
 
