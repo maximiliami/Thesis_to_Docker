@@ -51,8 +51,7 @@ Es stehen folgende drei Dockerfiles zur Verfügung, welche unterschiedliche Funk
 
 **!! In der Klasse „Authentication“ im Ordner Settings müssen URL, Username und Passwort zur Authentifizierung an der IoT-Plattform ThingsBoard hinterlegt werden, um alle Funktionalitäten nutzen zu können. !!**
 
-Damit die Docker-Container bereitgestellt werden können, vergewissern Sie sich, dass Docker auf Ihrem System installiert ist. Öffnen Sie die Konsole und navigieren Sie in das Verzeich
-nis, in dem die Dockerfiles liegen und führen Sie folgende dockerfile-spezifische Befehle aus:
+Damit die Docker-Container bereitgestellt werden können, vergewissern Sie sich, dass Docker auf Ihrem System installiert ist. Öffnen Sie die Konsole und navigieren Sie in das Verzeichnis, in dem die Dockerfiles liegen und führen Sie folgende dockerfile-spezifische Befehle aus:
 
 1. Dockerfile_cron
    - Erstellen des Images:
