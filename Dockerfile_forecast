@@ -1,0 +1,20 @@
+# Verwende das offizielle Jupyter-Notebook-Image von TensorFlow als Basis
+FROM tensorflow/tensorflow:latest
+
+LABEL authors="maximilianrupprecht"
+
+WORKDIR /Thesis_to_Docker
+
+# Copy data
+COPY ./data ./data
+COPY ./thesis_code ./thesis_code
+COPY ./requirements.txt requirements.txt
+
+# Add Pythonpath
+ENV PYTHONPATH ..:/Thesis_to_Docker/thesis_code:/Thesis_to_Docker/thesis_code/service:/Thesis_to_Docker/thesis_code/settings:/Thesis_to_Docker/thesis_code/forecast
+
+# Install requirements
+RUN pip install -r requirements.txt
+
+# Asuführen des forecast
+CMD ["python3", "-c", "import os; os.chdir('/Thesis_to_Docker/thesis_code/forecast'); exec(open('forecast.py').read())"]

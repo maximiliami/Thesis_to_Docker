@@ -1,0 +1,3 @@
+# Starts the forecast script each Day at 05:00 clock in the morning (Servertime)
+0 5 * * * PYTHONPATH=.:/Thesis_to_Docker:/Thesis_to_Docker/thesis_code:/Thesis_to_Docker/thesis_code/service:/Thesis_to_Docker/thesis_code/settings:/Thesis_to_Docker/thesis_code/forecast /usr/bin/python3 -c "import os; os.chdir('/Thesis_to_Docker/thesis_code/forecast'); exec(open('forecast.py').read())" >> /var/log/cron.log 2>&1
+# Do not delete the empty row

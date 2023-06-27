@@ -1,0 +1,37 @@
+FROM tensorflow/tensorflow:latest
+
+LABEL authors="maximilianrupprecht"
+
+WORKDIR /Thesis_to_Docker
+
+COPY ./data ./data
+COPY ./thesis_code ./thesis_code
+COPY ./cron/cronjob /etc/cron.d/cronjob
+COPY ./requirements.txt requirements.txt
+
+# install cron & dos2unix
+RUN apt-get update && apt-get install -y cron
+RUN apt-get update && apt-get install -y dos2unix
+
+# Add Pythonpath
+ENV PYTHONPATH ..:/Thesis_to_Docker/thesis_code:/Thesis_to_Docker/thesis_code/service:/Thesis_to_Docker/thesis_code/settings:/Thesis_to_Docker/thesis_code/forecast
+
+# dos2unix for cron
+RUN dos2unix /etc/cron.d/cronjob
+
+# Gewähre die Ausführungsberechtigung für die crontab-Datei
+RUN chmod 0644 /etc/cron.d/cronjob
+RUN chmod 0744 ./thesis_code/forecast/forecast.py
+
+# Create the log file and granting the execution permission
+RUN touch /var/log/cron.log
+RUN chmod 0644 /var/log/cron.log
+
+# install requirements
+RUN pip install -r requirements.txt
+
+# Install cronjob
+RUN crontab /etc/cron.d/cronjob
+
+# Start the cron service
+CMD cron && tail -f /var/log/cron.log

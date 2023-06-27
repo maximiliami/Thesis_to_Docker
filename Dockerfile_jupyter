@@ -1,0 +1,23 @@
+# Verwende das offizielle Jupyter-Notebook-Image von TensorFlow als Basis
+FROM tensorflow/tensorflow:latest-jupyter
+
+LABEL authors="maximilianrupprecht"
+
+WORKDIR /Thesis_to_Docker
+
+# Copy data
+COPY ./data ./data
+COPY ./thesis_code ./thesis_code
+COPY ./requirements.txt requirements.txt
+
+# Add Pythonpath
+ENV PYTHONPATH ..:/Thesis_to_Docker/thesis_code:/Thesis_to_Docker/thesis_code/service:/Thesis_to_Docker/thesis_code/settings:/Thesis_to_Docker/thesis_code/forecast
+
+# Open Jupyter-Port
+EXPOSE 8888
+
+# Install requirements
+RUN pip install -r requirements.txt
+
+# Start Jupyter notebook on container startup
+CMD jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root
